@@ -21,5 +21,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.goodsGroup = require("./goods-group.model.js")(sequelize, Sequelize)
+db.goodsGroup = require("./goods.model.js")(sequelize, Sequelize)
 
 module.exports = db;
