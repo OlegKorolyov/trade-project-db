@@ -5,18 +5,13 @@ module.exports = (sequelize, Sequelize) => {
       amount: {
         type: DataTypes.DOUBLE
       },
-      purchase: {
+      purchaseId: {
         type: DataTypes.INTEGER
       },
       goods: {
         type: Sequelize.INTEGER
       }
     });
-
-
-    PurchaseGoods.belongsTo(Purchase, { foreignKey: 'purchase' }); 
-    PurchaseGoods.belongsTo(Goods, { foreignKey: 'goods' }); 
-
-  
-    return Purchase;
+ 
+    return PurchaseGoods;
   };
