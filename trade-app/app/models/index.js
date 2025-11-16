@@ -22,7 +22,7 @@ db.sequelize = sequelize;
 
 db.goodsGroup = require("./goods-group.model.js")(sequelize, Sequelize)
 db.goods = require("./goods.model.js")(sequelize, Sequelize)
-// db.pricelist = require("./pricelist.model.js")(sequelize, Sequelize)
+db.pricelist = require("./pricelist.model.js")(sequelize, Sequelize)
 // db.pricelistgoods = require("./pricelistgoods.model.js")(sequelize, Sequelize)
 // db.purchse = require("./purchase.model.js")(sequelize, Sequelize)
 // db.purchsegoods = require("./purchasegoods.model.js")(sequelize, Sequelize)
