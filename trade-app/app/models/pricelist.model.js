@@ -1,4 +1,4 @@
-import { DataTypes } from '@sequelize/core';
+const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize, Sequelize) => {
     const Pricelist = sequelize.define("procelist", {

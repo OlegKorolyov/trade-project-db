@@ -11,9 +11,5 @@ module.exports = (sequelize, Sequelize) => {
       }
     });
 
-
-    GoodsGroup.belongsTo(GoodsGroup, { foreignKey: 'baseGoodsGroup' }); 
-
-  
     return GoodsGroup;
   };

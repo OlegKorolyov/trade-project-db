@@ -1,3 +1,5 @@
+const { DataTypes } = require('sequelize');
+
 module.exports = (sequelize, Sequelize) => {
     const Goods = sequelize.define("goods", {
       code: {
@@ -12,14 +14,11 @@ module.exports = (sequelize, Sequelize) => {
       articul: {
         type: Sequelize.INTEGER
       },
-      goodsgroup: {
+      goodsGroup: {
         type: Sequelize.INTEGER
       }
     });
 
-
-    Goods.belongsTo(GoodsGroup, { foreignKey: 'goodsGroup' }); 
-
-  
+    
     return Goods;
   };
