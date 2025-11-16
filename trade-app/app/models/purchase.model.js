@@ -8,14 +8,10 @@ module.exports = (sequelize, Sequelize) => {
       invoiceDate: {
         type: DataTypes.DATE
       },
-      pricelist: {
+      priceList: {
         type: Sequelize.INTEGER
       }
     });
-
-
-    Purchase.belongsTo(Pricelist, { foreignKey: 'pricelist' }); 
-
   
     return Purchase;
   };

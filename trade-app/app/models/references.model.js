@@ -11,5 +11,6 @@ module.exports = (db) => {
     db.pricelistGoods.belongsTo(db.pricelist, { foreignKey: 'priceList' }); 
     db.pricelistGoods.belongsTo(db.goods, { foreignKey: 'goods' }); 
 
-  
+    //purchase
+    db.purchase.belongsTo(db.pricelist, { foreignKey: 'priceList' }); 
 };
