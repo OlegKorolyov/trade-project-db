@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
       price: {
         type: DataTypes.DOUBLE
       },
-      pricelist: {
+      priceList: {
         type: Sequelize.INTEGER
       },
       goods: {
@@ -13,9 +13,5 @@ module.exports = (sequelize, Sequelize) => {
       }
     });
 
-    PricelistGoods.belongsTo(Pricelist, { foreignKey: 'pricelist' }); 
-    PricelistGoods.belongsTo(Goods, { foreignKey: 'goods' }); 
-
-  
     return PricelistGoods;
   };

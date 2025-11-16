@@ -6,4 +6,10 @@ module.exports = (db) => {
 
     //Goods references
     db.goods.belongsTo(db.goodsGroup, { foreignKey: 'goodsGroup' }); 
+
+    //pricelistgoods
+    db.pricelistGoods.belongsTo(db.pricelist, { foreignKey: 'priceList' }); 
+    db.pricelistGoods.belongsTo(db.goods, { foreignKey: 'goods' }); 
+
+  
 };
