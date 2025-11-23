@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const db = require("./app/models");
-db.sequelize.sync({ force: true })
+db.sequelize.sync(/*{ force: true }*/)
   .then(() => {
     console.log("Synced db.");
   })
@@ -31,6 +31,9 @@ app.get("/", (req, res) => {
 });
 
 require("dotenv").config();
+
+//routes
+require("./app/routes/goodsgroup.routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.NODE_DOCKER_PORT || 8080;
