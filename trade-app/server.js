@@ -28,11 +28,6 @@ db.sequelize.sync(/*{ force: true }*/)
   });
 
   
-//simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to trade-app application." });
-});
-
 //routes
 require("./app/routes/goodsgroup.routes")(app);
 
