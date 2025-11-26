@@ -34,7 +34,7 @@ exports.create = (req, res) => {
 
 // Retrieve all GoodsGroup from the database.
 exports.findAll = (req, res) => {
-  
+  res.json({ message: 'GET api/goodsgroups'});
 };
 
 // Find a single GoodsGroup with an id

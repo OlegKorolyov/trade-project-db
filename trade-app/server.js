@@ -5,8 +5,10 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "*"
 };
+
+require("dotenv").config();
 
 app.use(cors(corsOptions));
 
@@ -25,18 +27,18 @@ db.sequelize.sync(/*{ force: true }*/)
     console.log("Failed to sync db: " + err.message);
   });
 
-// simple route
+  
+//simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to trade-app application." });
 });
 
-require("dotenv").config();
-
 //routes
 require("./app/routes/goodsgroup.routes")(app);
 
+
 // set port, listen for requests
-const PORT = process.env.NODE_DOCKER_PORT || 8080;
+const PORT = process.env.NODE_DOCKER_PORT || 8082;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

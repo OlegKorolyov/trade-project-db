@@ -1,26 +1,28 @@
 module.exports = app => {
-    const goodsgoup = require("../controllers/goodsgroup.controller.js");
-  
-    var router = require("express").Router();
+    const goodsgroup = require("../controllers/goodsgroup.controller.js");
+    
+    var express = require("express")
+    var router = express.Router();
   
     // Create a new GoodsGroup
-    router.post("/", goodsgoup.create);
+    router.post("/", goodsgroup.create);
   
     // Retrieve all GoodsGroup
-    router.get("/", goodsgoup.findAll);
+    router.get("/", goodsgroup.findAll);
   
     // Retrieve a single GoodsGroup with id
-    router.get("/:id", goodsgoup.findOne);
+    router.get("/:id", goodsgroup.findOne);
   
     // Update a GoodsGroup with id
-    router.put("/:id", goodsgoup.update);
+    router.put("/:id", goodsgroup.update);
   
     // Delete a GoodsGroup with id
-    router.delete("/:id", goodsgoup.delete);
+    router.delete("/:id", goodsgroup.delete);
   
     // Create a new GoodsGroup
-    router.delete("/", goodsgoup.deleteAll);
+    router.delete("/", goodsgroup.deleteAll);
   
-    app.use('/api/goodsgoups', router);
+    app.use('/api/goodsgroups', router);
+    console.log('router for /api/goodsgroups initialized')
   };
 
