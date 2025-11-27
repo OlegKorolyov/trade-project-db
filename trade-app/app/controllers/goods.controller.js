@@ -4,6 +4,7 @@ const Op = db.Sequelize.Op;
 
 // Create and Save a new Goods
 exports.create = (req, res) => {
+    console.log('goods.create() ' + req.body);
     // Validate request
     if (!req.body.name) {
       res.status(400).send({
@@ -24,11 +25,11 @@ exports.create = (req, res) => {
       name: req.body.name,
       description: req.body.description,
       articul: req.body.articul,
-      Goods: req.body.baseGoods
+      goodsGroup: req.body.goodsGroup
     };
   
     // Save Goods in the database
-    Goods.create(Goods)
+    Goods.create(goods)
       .then(data => {
         res.send(data);
       })
