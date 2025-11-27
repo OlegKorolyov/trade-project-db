@@ -30,6 +30,7 @@ db.sequelize.sync(/*{ force: true }*/)
   
 //routes
 require("./app/routes/goodsgroup.routes")(app);
+require("./app/routes/goods.routes")(app);
 
 
 // set port, listen for requests
