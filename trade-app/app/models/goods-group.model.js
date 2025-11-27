@@ -7,7 +7,8 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
       baseGoodsGroup: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: true
       }
     });
 

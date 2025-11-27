@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new GoodsGroup
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.title) {
+    if (!req.body.name) {
       res.status(400).send({
         message: "Content can not be empty!"
       });
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
   
     // Create a GoodsGroup
     const goodsGroup = {
-      name: req.body.title,
+      name: req.body.name,
       description: req.body.description,
       baseGoodsGroup: req.body.baseGoodsGroup
     };
