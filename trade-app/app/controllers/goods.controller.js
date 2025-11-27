@@ -1,6 +1,7 @@
 const db = require("../models");
 const Goods = db.goods;
 const Op = db.Sequelize.Op;
+const { QueryTypes } = require('sequelize');
 
 // Create and Save a new Goods
 exports.create = (req, res) => {
@@ -143,5 +144,25 @@ exports.deleteAll = (req, res) => {
         message:
           err.message || "Some error occurred while removing all Goods."
       });
+    });
+
+    
+};
+
+//Get goods group  name for current goods
+exports.getGoodsGroupName = (req, res) => {
+    const id = req.params.id;
+
+    db.sequelize.query(`SELECT gg.name FROM goodsgroups gg LEFT JOIN goods g ON gg.id = g.goods_group WHERE g.id = ${id}`, {
+        type: QueryTypes.SELECT,
+    })
+    .then(name => {
+        res.send({name: `${name ? name : 'NO_NAME_ERROR'}`});
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:
+              err.message || "Some error occurred while getting goodsgroup name."
+          });
     });
 };

@@ -14,8 +14,9 @@ module.exports = (sequelize, Sequelize) => {
       articul: {
         type: Sequelize.INTEGER
       },
-      goodsGroup: {
-        type: Sequelize.INTEGER
+      goods_group: {
+        type: Sequelize.INTEGER,
+
       }
     });
 

@@ -21,6 +21,9 @@ module.exports = app => {
   
     // Create a new goods
     router.delete("/", goods.deleteAll);
+
+    //get goodsgroup name
+    router.get("/:id/goodsgroupname", goods.getGoodsGroupName);
   
     app.use('/api/goods', router);
   };
