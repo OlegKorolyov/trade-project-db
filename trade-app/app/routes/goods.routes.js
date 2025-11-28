@@ -24,6 +24,9 @@ module.exports = app => {
 
     //get goodsgroup name
     router.get("/:id/goodsgroupname", goods.getGoodsGroupName);
+
+    //get goodsgroup
+    router.get("/:id/goodsgroup", goods.getGoodsGroup);
   
     app.use('/api/goods', router);
   };

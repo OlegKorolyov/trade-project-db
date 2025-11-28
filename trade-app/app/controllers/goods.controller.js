@@ -1,7 +1,9 @@
 const db = require("../models");
 const Goods = db.goods;
+const GoodsGroup = db.goodsGroup;
 const Op = db.Sequelize.Op;
 const { QueryTypes } = require('sequelize');
+const util = require('util')
 
 // Create and Save a new Goods
 exports.create = (req, res) => {
@@ -156,13 +158,34 @@ exports.getGoodsGroupName = (req, res) => {
     db.sequelize.query(`SELECT gg.name FROM goodsgroups gg LEFT JOIN goods g ON gg.id = g.goods_group WHERE g.id = ${id}`, {
         type: QueryTypes.SELECT,
     })
-    .then(name => {
-        res.send({name: `${name ? name : 'NO_NAME_ERROR'}`});
+    .then(result => {
+        res.send({name: `${result[0].name ? result[0].name : 'NO_NAME_ERROR'}`});
     })
     .catch(err => {
         res.status(500).send({
             message:
               err.message || "Some error occurred while getting goodsgroup name."
+          });
+    });
+};
+
+//Get goods group  name for current goods
+exports.getGoodsGroup = (req, res) => {
+    const id = req.params.id;
+
+    db.sequelize.query(`SELECT gg FROM goodsgroups gg LEFT JOIN goods g ON gg.id = g.goods_group WHERE g.id = ${id}`, {
+        model: GoodsGroup,
+        mapToModel: true,
+        type: QueryTypes.SELECT,
+    })
+    .then(result => {
+        console.log(JSON.stringify(result[0]))
+        res.send(result[0]);
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:
+              err.message || "Some error occurred while getting goodsgroup."
           });
     });
 };
