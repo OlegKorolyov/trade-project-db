@@ -173,9 +173,10 @@ exports.getGoodsGroupName = (req, res) => {
 exports.getGoodsGroup = (req, res) => {
     const id = req.params.id;
 
-    db.sequelize.query(`SELECT gg.* FROM goodsgroups gg LEFT JOIN goods g ON gg.id = g.goods_group WHERE g.id = ${id}`, {
+    db.sequelize.query('SELECT gg.* FROM goodsgroups gg LEFT JOIN goods g ON gg.id = g.goods_group WHERE g.id = :id', {
         model: GoodsGroup,
         mapToModel: true,
+        replacements: {id: id},
         type: QueryTypes.SELECT,
     })
     .then(result => {

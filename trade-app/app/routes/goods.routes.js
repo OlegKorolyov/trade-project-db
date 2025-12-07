@@ -3,13 +3,96 @@ module.exports = app => {
     
     var express = require("express")
     var router = express.Router();
+
+    /**
+    * @swagger
+    * components:
+    *   schemas:
+    *     Goods:
+    *       type: object
+    *       properties:
+     *        id:
+     *          type: integer
+     *          example: 1
+     *        code:
+     *          type: string
+     *          example: goods1
+     *        name:
+     *          type: string
+     *          example: goods1
+     *        description:
+     *          type: string
+     *          example: Goods 1.1 description
+     *        articul:
+     *          type: integer
+     *          example: 12345
+     *        goodsGroup:
+     *          type: integer
+     *          example: 1
+    */
   
+
+    /**
+     * @swagger
+     * /api/goods:
+     *   post:
+     *     summary: Create now Goods
+     *     requestBody:
+     *       required: true
+     *       content: 
+     *         application/json:
+     *           schema: 
+     *             $ref: '#/components/schemas/Goods'
+     *     responses:
+     *       201:
+     *         description: Goods created
+     * 
+     */
     // Create a new goods
     router.post("/", goods.create);
   
     // Retrieve all goods
+    /**
+     * @swagger
+     * /api/goods:
+     *   get:
+     *     summary: Retrieve a list of goods
+     *     responses:
+     *       200:
+     *         description: A list of goods
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: array
+     *               items: 
+     *                 $ref: '#/components/schemas/Goods'
+     *                   
+     */
     router.get("/", goods.findAll);
   
+
+    /**
+     * @swagger
+     * /api/goods/{id}:
+     *   get:
+     *     summary: Retrieve a list of goods
+     *     parameters:
+     *       - in: path
+     *         name: id
+     *         required: true
+     *         schema:
+     *           type: integer
+     *           format: int64
+     *         description: The Goods ID
+     *     responses:
+     *       200:
+     *         description: A list of goods
+     *         content:
+     *           application/json:
+     *             schema:
+     *               $ref: '#/components/schemas/Goods'
+     *                   
+     */
     // Retrieve a single goods with id
     router.get("/:id", goods.findOne);
   
