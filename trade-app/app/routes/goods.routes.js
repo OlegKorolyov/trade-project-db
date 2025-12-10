@@ -69,6 +69,39 @@ module.exports = app => {
      *                   
      */
     router.get("/", goods.findAll);
+
+
+    /**
+     * * @swagger
+     * /api/goods:
+     *   get:
+     *     summary: Retrieve a paged list of goods
+     *     parameters:
+     *       - in: query
+     *         name: page
+     *         required: false
+     *         schema:
+     *           type: integer
+     *           format: int64
+     *         description: page number
+     *       - in: query
+     *         name: size
+     *         required: false
+     *         schema:
+     *           type: integer
+     *           format: int64
+     *         description: page size
+     *     responses:
+     *       200:
+     *         description: A list of goods
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: array
+     *               items: 
+     *                 $ref: '#/components/schemas/Goods'
+     */
+    router.get("/paged", goods.findAllPaged);
   
 
     /**

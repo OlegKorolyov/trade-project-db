@@ -61,6 +61,32 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.findAllPaged = (req, res) => {
+  const page = parseInt(req.query.page) || 1; // Default to page 1
+    const size = parseInt(req.query.size) || 10; // Default to 10 items per page
+
+    const offset = (page - 1) * size;
+
+    try {
+        const { count, rows } = Goods.findAndCountAll({
+            limit: size,
+            offset: offset,
+            // Add any other where clauses, orderings, etc.
+        });
+
+        res.json({
+            totalItems: count,
+            totalPages: Math.ceil(count / size),
+            currentPage: page,
+            items: rows,
+        });
+    } catch (error) {
+        console.error('Error fetching items:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+
+};
+
 // Find a single Goods with an id
 exports.findOne = (req, res) => {
   const id = req.params.id;
